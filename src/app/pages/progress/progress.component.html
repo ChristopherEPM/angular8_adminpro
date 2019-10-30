@@ -6,6 +6,10 @@
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [attr.ariaValuenow]="progreso" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="progreso + '%'"></div>
                 </div>
+                <br/>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" [attr.ariaValuenow]="progreso" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" [style.width]="progreso + '%'"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -15,26 +19,16 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-primary" type="button" (click)="changeValue(-5)">
-                            <i class="mdi mdi-minus"></i>
-                        </button>
-                    </div>
-                    <input type="text" class="form-control" name="progreso" [(ngModel)]="progreso">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" (click)="changeValue(+5)">
-                            <i class="mdi mdi-plus"></i>
-                        </button>
-                    </div>
-                </div>
+                <!-- [leyend]="leyenda", by this way we can assing to a variable leyenda (at this moment that var dont exists, so it will give an error -->
+                <!-- leyend ="leyenda", by this way we can send this value 'leyenda' literally as string -->
+                <app-increaser leyend="Progress Azul" [progreso]="20"></app-increaser>
             </div>
         </div>
     </div>
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                texto 2
+                <app-increaser leyend="Progress Verde" [progreso]="20"></app-increaser>
             </div>
         </div>
     </div>
