@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-increaser',
@@ -12,14 +12,22 @@ export class IncreaserComponent implements OnInit {
   //  in this component it still being used as leyend
   @Input() leyend: string = 'Leyenda';
   @Input() progreso: number = 50;
+
+  @Output() cambioValor: EventEmitter<number> = new EventEmitter();
+
   constructor() {
     // console.log('Leyenda', this.leyend);
-    console.log('Progreso', this.progreso);
+    // console.log('Progreso', this.progreso);
   }
 
   ngOnInit() {
-    console.log('Leyenda', this.leyend);
-    console.log('Progreso', this.progreso);
+    // console.log('Leyenda', this.leyend);
+    // console.log('Progreso', this.progreso);
+  }
+
+  onChanges( newValue: number ) {
+    this.cambioValor.emit( this.progreso );
+    console.log( newValue);
   }
 
   changeValue( val: number ) {
@@ -33,5 +41,6 @@ export class IncreaserComponent implements OnInit {
     }
 
     this.progreso = this.progreso + val;
+    this.cambioValor.emit( this.progreso );
   }
 }
